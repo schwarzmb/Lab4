@@ -22,8 +22,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webView = new WebView();
-        setContentView(webView);
+        //WebView webView = new WebView();
+        //setContentView(webView);
+        try {
+            getURL("https://www.reddit.com");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private String getURL(String string) throws java.io.IOException{
@@ -34,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("URL Error");
         }
         URLConnection urlConnection = url.openConnection(url);
-        InputStreamReader inputStreamReader
+        InputStreamReader inputStreamReader;
         try {
             inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
         } catch (IOException e) {
@@ -46,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
         if(DEBUG)
             Log.i(TAG_PREFIX + "Stock.load()", "line = " + line);
 
-        while (br.readLine() != null){
+        while (br.readLine() != null)
+            //do nothing
             ;
 
         br.close();
@@ -54,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //return string;
+        return string;
 
     }
 }
