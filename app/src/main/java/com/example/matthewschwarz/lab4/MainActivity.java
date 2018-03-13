@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG_PREFIX = "URL";
     private static final boolean DEBUG = true;
+    TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +28,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //WebView webView = new WebView();
         //setContentView(webView);
+        /*
         try {
             getURL("https://www.reddit.com");
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
+        name = findViewById(R.id.name);
+        MyAsyncTask myAsyncTask = new MyAsyncTask(name);
+        myAsyncTask.execute("https://jsonplaceholder.typicode.com/users");
     }
 
+    /*
     private String getURL(String string) throws java.io.IOException{
         URL url;
         try{
@@ -63,4 +73,5 @@ public class MainActivity extends AppCompatActivity {
         return string;
 
     }
+    */
 }
