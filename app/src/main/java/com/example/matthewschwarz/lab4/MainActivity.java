@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         BufferedReader br = new BufferedReader(inputStreamReader);
 
